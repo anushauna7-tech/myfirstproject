@@ -1,0 +1,37 @@
+name: C Program CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Get source code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Install GCC
+      - name: Install GCC
+        run: sudo apt-get update && sudo apt-get install -y gcc
+
+      # Step 3: Compile C program
+      - name: Build C program
+        run: gcc src/hello.c -o hello
+
+      # Step 4: Run C program
+      - name: Run C program
+        run: ./hello
+
+      # Step 5: Compile test program
+      - name: Build tests
+        run: gcc tests/test.c -o test
+
+      # Step 6: Execute tests
+      - name: Run tests
+        run: ./test
