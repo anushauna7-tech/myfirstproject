@@ -22,11 +22,11 @@ jobs:
 
       # Step 3: Compile C program
       - name: Build C program
-        run: gcc src/main.c -o main
+        run: gcc src/hello.c -o hello
 
       # Step 4: Run C program
       - name: Run C program
-        run: ./main
+        run: ./hello
 
       # Step 5: Compile test program
       - name: Build tests
